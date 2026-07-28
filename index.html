@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ufoegbune Silas Oliseloke — silas.exes</title>
+<meta name="description" content="Ufoegbune Silas Oliseloke — ICT student, self-taught developer, founder of Silas Edge (graphic design & digital marketing).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1512;
+    --surface: #161F1B;
+    --surface-2: #1D2822;
+    --line: #2A3730;
+    --text: #F2EFE6;
+    --muted: #8FA096;
+    --amber: #FFB238;
+    --blue: #6FB3DE;
+    --radius: 14px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+
+  /* subtle circuit-line background texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity:0.06;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  header{
+    padding:20px 0 0;
+    position:relative; z-index:1;
+  }
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .brandmark{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.06em;
+    color:var(--amber);
+    display:flex; align-items:center; gap:8px;
+  }
+  .brandmark .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 8px var(--amber);
+    animation:blink 2.4s infinite;
+  }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+  .status{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  /* HERO */
+  .hero{
+    padding:64px 0 40px;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:40px;
+    align-items:center;
+    position:relative; z-index:1;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(32px, 5.2vw, 52px);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  h1 .handle{
+    color:var(--amber);
+  }
+  .tagline{
+    margin-top:16px;
+    font-size:17px;
+    color:var(--muted);
+    max-width:46ch;
+  }
+  .hero-cta{
+    margin-top:28px;
+    display:flex; gap:12px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:11px 18px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    display:inline-flex; align-items:center; gap:8px;
+    transition:border-color .2s, transform .2s;
+  }
+  .btn:hover{ border-color:var(--amber); transform:translateY(-1px); }
+  .btn.primary{
+    background:var(--amber);
+    color:#12180F;
+    border-color:var(--amber);
+    font-weight:600;
+  }
+  .btn.primary:hover{ background:#ffc35e; }
+
+  .hero-photo{
+    position:relative;
+  }
+  .photo-frame{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:10px;
+    background:var(--surface);
+  }
+  .photo-frame img{
+    width:100%;
+    display:block;
+    border-radius:8px;
+    filter: grayscale(15%) contrast(1.03);
+  }
+  .photo-tag{
+    margin-top:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    display:flex; justify-content:space-between;
+  }
+
+  /* SPEC PANEL — signature element */
+  .spec{
+    position:relative; z-index:1;
+    margin:8px 0 56px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--surface);
+    overflow:hidden;
+  }
+  .spec-head{
+    padding:14px 20px;
+    border-bottom:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .spec-body{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .spec-row{
+    padding:16px 20px;
+    border-bottom:1px solid var(--line);
+    border-right:1px solid var(--line);
+  }
+  .spec-row:nth-child(even){ border-right:none; }
+  .spec-row .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:4px;
+  }
+  .spec-row .v{ font-size:15px; }
+
+  /* SECTIONS */
+  section{ position:relative; z-index:1; padding:36px 0; }
+  .section-head{
+    display:flex; align-items:baseline; gap:12px;
+    margin-bottom:22px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--amber);
+    font-size:13px;
+  }
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:24px;
+    font-weight:600;
+  }
+  .lead{ color:var(--muted); max-width:60ch; margin-bottom:24px; }
+
+  .grid-3{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:16px;
+  }
+  .card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px;
+    background:var(--surface);
+    transition:border-color .2s;
+  }
+  .card:hover{ border-color:var(--blue); }
+  .card h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:16px;
+    margin-bottom:8px;
+  }
+  .card p{ color:var(--muted); font-size:14px; }
+
+  .links-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:12px;
+  }
+  .link-card{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+    background:var(--surface);
+    display:flex; justify-content:space-between; align-items:center;
+    transition:border-color .2s, background .2s;
+  }
+  .link-card:hover{ border-color:var(--amber); background:var(--surface-2); }
+  .link-card .name{ font-weight:600; font-size:14px; }
+  .link-card .handle{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); }
+  .link-card .arrow{ color:var(--amber); font-family:'IBM Plex Mono', monospace; }
+
+  .contact-panel{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--surface);
+    padding:28px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  .contact-panel .label{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); margin-bottom:6px; }
+  .contact-panel .value{ font-size:20px; font-weight:600; font-family:'Space Grotesk', sans-serif; }
+
+  footer{
+    position:relative; z-index:1;
+    padding:32px 0 48px;
+    border-top:1px solid var(--line);
+    margin-top:24px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width: 760px){
+    .hero{ grid-template-columns:1fr; }
+    .hero-photo{ order:-1; max-width:280px; margin:0 auto; }
+    .spec-body{ grid-template-columns:1fr; }
+    .spec-row:nth-child(even){ border-right:1px solid var(--line); }
+    .grid-3{ grid-template-columns:1fr; }
+    .links-grid{ grid-template-columns:1fr 1fr; }
+    .topbar{ flex-direction:column; align-items:flex-start; gap:6px; }
+  }
+  @media (max-width: 460px){
+    .links-grid{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .brandmark .dot{ animation:none; }
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="topbar">
+    <div class="brandmark"><span class="dot"></span> silas.exes — system online</div>
+    <div class="status">Ilesa, Osun State · Nigeria</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">// identity.profile</div>
+      <h1>Ufoegbune Silas<br>Oliseloke <span class="handle">/ silas.exes</span></h1>
+      <p class="tagline">ICT student, self-taught developer, and founder of Silas Edge — a graphic design and digital marketing studio. I build things, break things, and put them back together better.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn" href="#work">See Silas Edge</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img src="assets/silas-1.jpg" alt="Ufoegbune Silas Oliseloke">
+      </div>
+      <div class="photo-tag">
+        <span>IMG_PROFILE.jpg</span>
+        <span>status: verified</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="spec">
+    <div class="spec-head">
+      <span>whoami --full</span>
+      <span>silas.exes</span>
+    </div>
+    <div class="spec-body">
+      <div class="spec-row">
+        <div class="k">Name</div>
+        <div class="v">Ufoegbune Silas Oliseloke</div>
+      </div>
+      <div class="spec-row">
+        <div class="k">Handle</div>
+        <div class="v">@silas.exes</div>
+      </div>
+      <div class="spec-row">
+        <div class="k">Studying</div>
+        <div class="v">ICT — University of Ilesa</div>
+      </div>
+      <div class="spec-row">
+        <div class="k">Building</div>
+        <div class="v">Silas Edge — design &amp; digital marketing</div>
+      </div>
+      <div class="spec-row">
+        <div class="k">Stack</div>
+        <div class="v">HTML · CSS · Python · Flask · Linux</div>
+      </div>
+      <div class="spec-row">
+        <div class="k">Base</div>
+        <div class="v">Ilesa, Osun State, Nigeria</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Silas Edge</h2>
+    </div>
+    <p class="lead">Graphic design and digital marketing, built for small brands and creators who need work that actually moves — not just looks nice.</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Graphic Design</h3>
+        <p>Logos, flyers, and social media visuals designed to grab attention and hold it.</p>
+      </div>
+      <div class="card">
+        <h3>Digital Marketing</h3>
+        <p>Content and campaign support for brands growing their presence on TikTok and beyond.</p>
+      </div>
+      <div class="card">
+        <h3>Dev &amp; Tinkering</h3>
+        <p>Self-taught in web development — from Flask backends to Linux system administration.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Find me online</h2>
+    </div>
+    <p class="lead">Same name, same face, everywhere — @silas.exes.</p>
+    <div class="links-grid">
+      <a class="link-card" href="https://www.tiktok.com/@silas.exes" target="_blank" rel="noopener">
+        <div><div class="name">TikTok</div><div class="handle">@silas.exes</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="link-card" href="https://www.instagram.com/silas.exes" target="_blank" rel="noopener">
+        <div><div class="name">Instagram</div><div class="handle">@silas.exes</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="link-card" href="https://www.threads.net/@silas.exes" target="_blank" rel="noopener">
+        <div><div class="name">Threads</div><div class="handle">@silas.exes</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="link-card" href="https://x.com/SOliseloke" target="_blank" rel="noopener">
+        <div><div class="name">X / Twitter</div><div class="handle">@SOliseloke</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="link-card" href="https://www.pinterest.com/silasexes" target="_blank" rel="noopener">
+        <div><div class="name">Pinterest</div><div class="handle">silasexes</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="link-card" href="https://www.snapchat.com/add/lokei2009" target="_blank" rel="noopener">
+        <div><div class="name">Snapchat</div><div class="handle">lokei2009</div></div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="link-card" href="https://www.facebook.com/" target="_blank" rel="noopener">
+        <div><div class="name">Facebook</div><div class="handle">Ufoegbune Oliseloke Silas</div></div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-panel">
+      <div>
+        <div class="label">reach out via</div>
+        <div class="value">WhatsApp — +234 706 203 2168</div>
+      </div>
+      <a class="btn primary" href="https://wa.me/2347062032168" target="_blank" rel="noopener">Message on WhatsApp</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Ufoegbune Silas Oliseloke</span>
+  <span class="mono">built by hand · Ilesa, NG</span>
+</footer>
+
+</body>
+</html>

@@ -73,6 +73,7 @@
     top:0;
     height:100vh;
     overflow-y:auto;
+    background:var(--bg);
   }
   .brandmark{
     font-family:'IBM Plex Mono', monospace;
@@ -301,10 +302,11 @@
     .overlay{
       display:none;
       position:fixed; inset:0;
-      background:rgba(0,0,0,0.5);
+      background:rgba(0,0,0,0.7);
       z-index:15;
+      pointer-events:none;
     }
-    .overlay.show{ display:block; }
+    .overlay.show{ display:block; pointer-events:auto; }
   }
 </style>
 </head>

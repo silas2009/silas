@@ -347,7 +347,7 @@
   async function loadSection(name){
     content.innerHTML = '<div class="loading">loading...</div>';
     try{
-      const res = await fetch('sections/' + name + '.html');
+      const res = await fetch(name + '.html');
       const html = await res.text();
       content.innerHTML = html;
     }catch(e){

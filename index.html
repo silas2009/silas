@@ -15,7 +15,7 @@
 <title>Ufoegbune Silas Oliseloke — silas.exes</title>
 <meta name="description" content="Ufoegbune Silas Oliseloke — ICT student, self-taught developer, founder of Silas Edge (graphic design & digital marketing).">
 <meta name="google-site-verification" content="1CqMyaHjBFaVHoNaAsZBhbisGy5V53bAlVTcp1QNwHY" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -40,9 +40,7 @@
   }
   a{ color:inherit; text-decoration:none; }
   .mono{ font-family:'IBM Plex Mono', monospace; }
-  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
 
-  /* subtle circuit-line background texture */
   body::before{
     content:"";
     position:fixed; inset:0;
@@ -55,21 +53,35 @@
     z-index:0;
   }
 
-  header{
-    padding:20px 0 0;
+  /* LAYOUT */
+  .app{
+    display:flex;
+    min-height:100vh;
     position:relative; z-index:1;
   }
-  .topbar{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
+
+  /* SIDEBAR */
+  .sidebar{
+    width:230px;
+    flex-shrink:0;
+    border-right:1px solid var(--line);
+    padding:24px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
   }
   .brandmark{
     font-family:'IBM Plex Mono', monospace;
     font-size:13px;
-    letter-spacing:0.06em;
+    letter-spacing:0.04em;
     color:var(--amber);
     display:flex; align-items:center; gap:8px;
+    margin-bottom:8px;
+    padding:0 10px;
   }
   .brandmark .dot{
     width:7px; height:7px; border-radius:50%;
@@ -78,21 +90,80 @@
     animation:blink 2.4s infinite;
   }
   @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.25;} }
-  .status{
-    font-family:'IBM Plex Mono', monospace;
+  .sidebar .who{
     font-size:12px;
     color:var(--muted);
+    padding:0 10px 20px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:16px;
+  }
+  .navbtn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-align:left;
+    background:transparent;
+    border:none;
+    color:var(--muted);
+    padding:11px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    display:flex; align-items:center; gap:10px;
+    transition:background .15s, color .15s;
+    width:100%;
+  }
+  .navbtn:hover{ background:var(--surface); color:var(--text); }
+  .navbtn.active{ background:var(--surface-2); color:var(--amber); }
+  .navbtn .idx{ opacity:0.5; font-size:11px; }
+  .sidebar-foot{
+    margin-top:auto;
+    padding:12px 10px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    border-top:1px solid var(--line);
   }
 
-  /* HERO */
-  .hero{
-    padding:64px 0 40px;
-    display:grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap:40px;
-    align-items:center;
-    position:relative; z-index:1;
+  /* CONTENT */
+  .content-wrap{
+    flex:1;
+    min-width:0;
+    padding:40px 5vw 80px;
   }
+  .content-inner{
+    max-width:760px;
+    margin:0 auto;
+    animation:fadein .35s ease;
+  }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .loading{
+    color:var(--muted);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:40px 0;
+  }
+
+  /* MOBILE TOPBAR */
+  .mobile-topbar{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 20px;
+    border-bottom:1px solid var(--line);
+    position:sticky; top:0;
+    background:var(--bg);
+    z-index:5;
+  }
+  .menu-toggle{
+    background:var(--surface);
+    border:1px solid var(--line);
+    color:var(--text);
+    width:36px; height:36px;
+    border-radius:8px;
+    font-size:16px;
+  }
+
+  /* SHARED CONTENT STYLES (used inside fetched sections) */
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
     font-size:12px;
@@ -104,23 +175,25 @@
   h1{
     font-family:'Space Grotesk', sans-serif;
     font-weight:700;
-    font-size:clamp(32px, 5.2vw, 52px);
-    line-height:1.08;
+    font-size:clamp(30px, 5vw, 46px);
+    line-height:1.1;
     letter-spacing:-0.01em;
   }
-  h1 .handle{
-    color:var(--amber);
+  h1 .handle{ color:var(--amber); }
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:24px;
+    font-weight:600;
   }
-  .tagline{
-    margin-top:16px;
-    font-size:17px;
-    color:var(--muted);
-    max-width:46ch;
+  h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:16px;
   }
-  .hero-cta{
-    margin-top:28px;
-    display:flex; gap:12px; flex-wrap:wrap;
-  }
+  .tagline{ margin-top:16px; font-size:17px; color:var(--muted); max-width:50ch; }
+  .lead{ color:var(--muted); max-width:60ch; margin-bottom:24px; }
+  .section-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:22px; }
+  .section-num{ font-family:'IBM Plex Mono', monospace; color:var(--amber); font-size:13px; }
+
   .btn{
     font-family:'IBM Plex Mono', monospace;
     font-size:13px;
@@ -129,152 +202,74 @@
     border:1px solid var(--line);
     display:inline-flex; align-items:center; gap:8px;
     transition:border-color .2s, transform .2s;
+    background:transparent;
+    color:var(--text);
+    cursor:pointer;
   }
   .btn:hover{ border-color:var(--amber); transform:translateY(-1px); }
-  .btn.primary{
-    background:var(--amber);
-    color:#12180F;
-    border-color:var(--amber);
-    font-weight:600;
-  }
+  .btn.primary{ background:var(--amber); color:#12180F; border-color:var(--amber); font-weight:600; }
   .btn.primary:hover{ background:#ffc35e; }
+  .hero-cta{ margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; }
 
-  .hero-photo{
-    position:relative;
-  }
-  .photo-frame{
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:10px;
-    background:var(--surface);
-  }
-  .photo-frame img{
-    width:100%;
-    display:block;
-    border-radius:8px;
-    filter: grayscale(15%) contrast(1.03);
-  }
-  .photo-tag{
-    margin-top:10px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    color:var(--muted);
-    display:flex; justify-content:space-between;
-  }
+  .hero{ display:grid; grid-template-columns: 1.15fr 0.85fr; gap:40px; align-items:center; padding-bottom:20px; }
+  .photo-frame{ border:1px solid var(--line); border-radius:var(--radius); padding:10px; background:var(--surface); }
+  .photo-frame img{ width:100%; display:block; border-radius:8px; filter:grayscale(15%) contrast(1.03); }
+  .photo-tag{ margin-top:10px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); display:flex; justify-content:space-between; }
 
-  /* SPEC PANEL — signature element */
-  .spec{
-    position:relative; z-index:1;
-    margin:8px 0 56px;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    background:var(--surface);
-    overflow:hidden;
-  }
-  .spec-head{
-    padding:14px 20px;
-    border-bottom:1px solid var(--line);
-    display:flex; justify-content:space-between; align-items:center;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--muted);
-  }
-  .spec-body{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .spec-row{
-    padding:16px 20px;
-    border-bottom:1px solid var(--line);
-    border-right:1px solid var(--line);
-  }
+  .spec{ margin:28px 0 20px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); overflow:hidden; }
+  .spec-head{ padding:14px 20px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); }
+  .spec-body{ display:grid; grid-template-columns: repeat(2, 1fr); }
+  .spec-row{ padding:16px 20px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); }
   .spec-row:nth-child(even){ border-right:none; }
-  .spec-row .k{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:0.05em;
-    margin-bottom:4px;
-  }
+  .spec-row .k{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; }
   .spec-row .v{ font-size:15px; }
 
-  /* SECTIONS */
-  section{ position:relative; z-index:1; padding:36px 0; }
-  .section-head{
-    display:flex; align-items:baseline; gap:12px;
-    margin-bottom:22px;
-  }
-  .section-num{
-    font-family:'IBM Plex Mono', monospace;
-    color:var(--amber);
-    font-size:13px;
-  }
-  h2{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:24px;
-    font-weight:600;
-  }
-  .lead{ color:var(--muted); max-width:60ch; margin-bottom:24px; }
+  section{ padding:8px 0 36px; }
 
-  .grid-3{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:16px;
-  }
-  .card{
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:20px;
-    background:var(--surface);
-    transition:border-color .2s;
-  }
+  .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+  .card{ border:1px solid var(--line); border-radius:var(--radius); padding:20px; background:var(--surface); transition:border-color .2s; }
   .card:hover{ border-color:var(--blue); }
-  .card h3{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:16px;
-    margin-bottom:8px;
-  }
-  .card p{ color:var(--muted); font-size:14px; }
+  .card p{ color:var(--muted); font-size:14px; margin-top:6px; }
 
-  .links-grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:12px;
-  }
-  .link-card{
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:16px 18px;
-    background:var(--surface);
-    display:flex; justify-content:space-between; align-items:center;
-    transition:border-color .2s, background .2s;
-  }
+  .links-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
+  .link-card{ border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:var(--surface); display:flex; justify-content:space-between; align-items:center; transition:border-color .2s, background .2s; }
   .link-card:hover{ border-color:var(--amber); background:var(--surface-2); }
   .link-card .name{ font-weight:600; font-size:14px; }
   .link-card .handle{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); }
   .link-card .arrow{ color:var(--amber); font-family:'IBM Plex Mono', monospace; }
 
-  .contact-panel{
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    background:var(--surface);
-    padding:28px;
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
-  }
+  .contact-panel{ border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
   .contact-panel .label{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); margin-bottom:6px; }
   .contact-panel .value{ font-size:20px; font-weight:600; font-family:'Space Grotesk', sans-serif; }
 
-  footer{
-    position:relative; z-index:1;
-    padding:32px 0 48px;
-    border-top:1px solid var(--line);
-    margin-top:24px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--muted);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  /* TIMELINE (My Story) */
+  .timeline{ position:relative; margin-top:20px; padding-left:28px; border-left:1px solid var(--line); }
+  .tl-item{ position:relative; margin-bottom:44px; }
+  .tl-item::before{
+    content:"";
+    position:absolute; left:-33px; top:4px;
+    width:11px; height:11px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 0 4px var(--bg), 0 0 0 5px var(--line);
   }
+  .tl-tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; }
+  .tl-photo{ border:1px solid var(--line); border-radius:var(--radius); padding:8px; background:var(--surface); max-width:260px; margin:12px 0; }
+  .tl-photo img{ width:100%; display:block; border-radius:8px; }
+  .tl-text{ color:var(--muted); max-width:55ch; }
+  .tl-title{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:18px; margin-bottom:6px; }
+
+  /* SKILLS */
+  .tag-cloud{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:9px 16px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    background:var(--surface);
+    color:var(--muted);
+  }
+  .tag.on{ border-color:var(--amber); color:var(--amber); }
 
   @media (max-width: 760px){
     .hero{ grid-template-columns:1fr; }
@@ -283,163 +278,104 @@
     .spec-row:nth-child(even){ border-right:1px solid var(--line); }
     .grid-3{ grid-template-columns:1fr; }
     .links-grid{ grid-template-columns:1fr 1fr; }
-    .topbar{ flex-direction:column; align-items:flex-start; gap:6px; }
   }
   @media (max-width: 460px){
     .links-grid{ grid-template-columns:1fr; }
   }
 
-  @media (prefers-reduced-motion: reduce){
-    .brandmark .dot{ animation:none; }
-    *{ transition:none !important; }
+  @media (max-width: 820px){
+    .app{ flex-direction:column; }
+    .sidebar{
+      position:fixed;
+      left:0; top:0; bottom:0;
+      z-index:20;
+      background:var(--bg);
+      transform:translateX(-100%);
+      transition:transform .25s ease;
+      width:250px;
+      height:100vh;
+    }
+    .sidebar.open{ transform:translateX(0); box-shadow:20px 0 40px rgba(0,0,0,0.4); }
+    .mobile-topbar{ display:flex; }
+    .content-wrap{ padding:28px 20px 60px; }
+    .overlay{
+      display:none;
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.5);
+      z-index:15;
+    }
+    .overlay.show{ display:block; }
   }
 </style>
 </head>
 <body>
 
-<header class="wrap">
-  <div class="topbar">
-    <div class="brandmark"><span class="dot"></span> silas.exes — system online</div>
-    <div class="status">Ilesa, Osun State · Nigeria</div>
-  </div>
-</header>
+<div class="mobile-topbar">
+  <div class="brandmark"><span class="dot"></span> silas.exes</div>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+</div>
+<div class="overlay" id="overlay"></div>
 
-<main class="wrap">
+<div class="app">
+  <nav class="sidebar" id="sidebar">
+    <div class="brandmark"><span class="dot"></span> silas.exes</div>
+    <div class="who">Ufoegbune Silas Oliseloke<br>ICT student · Silas Edge</div>
 
-  <section class="hero">
-    <div>
-      <div class="eyebrow">// identity.profile</div>
-      <h1>Ufoegbune Silas<br>Oliseloke <span class="handle">/ silas.exes</span></h1>
-      <p class="tagline">ICT student, self-taught developer, and founder of Silas Edge — a graphic design and digital marketing studio. I build things, break things, and put them back together better.</p>
-      <div class="hero-cta">
-        <a class="btn primary" href="#contact">Get in touch</a>
-        <a class="btn" href="#work">See Silas Edge</a>
-      </div>
-    </div>
-    <div class="hero-photo">
-      <div class="photo-frame">
-        <img src="silas-1.jpg" alt="Ufoegbune Silas Oliseloke">
-      </div>
-      <div class="photo-tag">
-        <span>IMG_PROFILE.jpg</span>
-        <span>status: verified</span>
-      </div>
-    </div>
-  </section>
+    <button class="navbtn" data-section="home"><span class="idx">01</span> Home</button>
+    <button class="navbtn" data-section="story"><span class="idx">02</span> My Story</button>
+    <button class="navbtn" data-section="projects"><span class="idx">03</span> Projects</button>
+    <button class="navbtn" data-section="skills"><span class="idx">04</span> Skills</button>
+    <button class="navbtn" data-section="contact"><span class="idx">05</span> Contact</button>
 
-  <div class="spec">
-    <div class="spec-head">
-      <span>whoami --full</span>
-      <span>silas.exes</span>
-    </div>
-    <div class="spec-body">
-      <div class="spec-row">
-        <div class="k">Name</div>
-        <div class="v">Ufoegbune Silas Oliseloke</div>
-      </div>
-      <div class="spec-row">
-        <div class="k">Handle</div>
-        <div class="v">@silas.exes</div>
-      </div>
-      <div class="spec-row">
-        <div class="k">Studying</div>
-        <div class="v">ICT — University of Ilesa</div>
-      </div>
-      <div class="spec-row">
-        <div class="k">Building</div>
-        <div class="v">Silas Edge — design &amp; digital marketing</div>
-      </div>
-      <div class="spec-row">
-        <div class="k">Stack</div>
-        <div class="v">HTML · CSS · Python · Flask · Linux</div>
-      </div>
-      <div class="spec-row">
-        <div class="k">Base</div>
-        <div class="v">Ilesa, Osun State, Nigeria</div>
-      </div>
-    </div>
-  </div>
+    <div class="sidebar-foot">© 2026 Ufoegbune Silas Oliseloke<br>Ilesa / Abeokuta, NG</div>
+  </nav>
 
-  <section id="work">
-    <div class="section-head">
-      <span class="section-num">01</span>
-      <h2>Silas Edge</h2>
+  <main class="content-wrap">
+    <div class="content-inner" id="content">
+      <div class="loading">loading...</div>
     </div>
-    <p class="lead">Graphic design and digital marketing, built for small brands and creators who need work that actually moves — not just looks nice.</p>
-    <div class="grid-3">
-      <div class="card">
-        <h3>Graphic Design</h3>
-        <p>Logos, flyers, and social media visuals designed to grab attention and hold it.</p>
-      </div>
-      <div class="card">
-        <h3>Digital Marketing</h3>
-        <p>Content and campaign support for brands growing their presence on TikTok and beyond.</p>
-      </div>
-      <div class="card">
-        <h3>Dev &amp; Tinkering</h3>
-        <p>Self-taught in web development — from Flask backends to Linux system administration.</p>
-      </div>
-    </div>
-  </section>
+  </main>
+</div>
 
-  <section>
-    <div class="section-head">
-      <span class="section-num">02</span>
-      <h2>Find me online</h2>
-    </div>
-    <p class="lead">Same name, same face, everywhere — @silas.exes.</p>
-    <div class="links-grid">
-      <a class="link-card" href="https://www.tiktok.com/@silas.exes" target="_blank" rel="noopener">
-        <div><div class="name">TikTok</div><div class="handle">@silas.exes</div></div>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="link-card" href="https://www.instagram.com/silas.exes" target="_blank" rel="noopener">
-        <div><div class="name">Instagram</div><div class="handle">@silas.exes</div></div>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="link-card" href="https://www.threads.net/@silas.exes" target="_blank" rel="noopener">
-        <div><div class="name">Threads</div><div class="handle">@silas.exes</div></div>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="link-card" href="https://x.com/SOliseloke" target="_blank" rel="noopener">
-        <div><div class="name">X / Twitter</div><div class="handle">@SOliseloke</div></div>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="link-card" href="https://www.pinterest.com/silasexes" target="_blank" rel="noopener">
-        <div><div class="name">Pinterest</div><div class="handle">silasexes</div></div>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="link-card" href="https://www.snapchat.com/add/lokei2009" target="_blank" rel="noopener">
-        <div><div class="name">Snapchat</div><div class="handle">lokei2009</div></div>
-        <span class="arrow">↗</span>
-      </a>
-      <a class="link-card" href="https://www.facebook.com/" target="_blank" rel="noopener">
-        <div><div class="name">Facebook</div><div class="handle">Ufoegbune Oliseloke Silas</div></div>
-        <span class="arrow">↗</span>
-      </a>
-    </div>
-  </section>
+<script>
+  const buttons = document.querySelectorAll('.navbtn');
+  const content = document.getElementById('content');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+  const menuToggle = document.getElementById('menuToggle');
 
-  <section id="contact">
-    <div class="section-head">
-      <span class="section-num">03</span>
-      <h2>Contact</h2>
-    </div>
-    <div class="contact-panel">
-      <div>
-        <div class="label">reach out via</div>
-        <div class="value">WhatsApp — +234 706 203 2168</div>
-      </div>
-      <a class="btn primary" href="https://wa.me/2347062032168" target="_blank" rel="noopener">Message on WhatsApp</a>
-    </div>
-  </section>
+  async function loadSection(name){
+    content.innerHTML = '<div class="loading">loading...</div>';
+    try{
+      const res = await fetch('sections/' + name + '.html');
+      const html = await res.text();
+      content.innerHTML = html;
+    }catch(e){
+      content.innerHTML = '<div class="loading">Could not load this section.</div>';
+    }
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.section === name));
+    window.location.hash = name;
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    window.scrollTo(0,0);
+  }
 
-</main>
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => loadSection(btn.dataset.section));
+  });
 
-<footer class="wrap">
-  <span>© 2026 Ufoegbune Silas Oliseloke</span>
-  <span class="mono">built by hand · Ilesa, NG</span>
-</footer>
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+  });
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  });
+
+  const startSection = window.location.hash ? window.location.hash.replace('#','') : 'home';
+  loadSection(startSection);
+</script>
 
 </body>
 </html>
